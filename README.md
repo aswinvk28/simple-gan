@@ -1,4 +1,4 @@
-# Simple GAN for MNIST
+# Temporal Difference Learner for MNIST
 
 A Generative Adversarial Model has been developed here for MNIST dataset. 
 
