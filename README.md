@@ -18,3 +18,6 @@ An input noise of:
 Generated:
 ![MNIST data](./data/images/Samples/Test/hori_epoch_1_batch_1.png)
 
+# Domain Modeller
+
+![IR Model for MNIST](./images/IR_Model.png)
