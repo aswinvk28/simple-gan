@@ -1,5 +1,5 @@
 import os, sys
-
+sys.path.append("/home/aswin/Documents/Courses/Udacity/Intel-Edge/Repository/gan-network/")
 from IE.MNISTGenerator import MNISTGenerator
 import argparse
 from network.utils import Logger
@@ -14,6 +14,27 @@ def parse_args():
         default="",
         required=True
     )
+    parser.add_argument(
+        '-b', '--batch',
+        help='Batch Size',
+        type=int,
+        default=1,
+        required=True
+    )
+    parser.add_argument(
+        '-mn', '--model_name',
+        help='Model name',
+        type=str,
+        default="",
+        required=True
+    )
+    parser.add_argument(
+        '-dn', '--data_name',
+        help='Data name',
+        type=str,
+        default="",
+        required=True
+    )
 
     return parser.parse_args()
 
@@ -23,15 +44,17 @@ def vectors_to_images(vectors):
 if __name__ == "__main__":
 
     args = parse_args()
-    logger = Logger(model_name="Generator", data_name="MNIST")
+    logger = Logger(model_name=args.model_name, data_name=args.data_name)
 
     gen = MNISTGenerator()
     gen.load_model(args.model)
-    num_test_samples = 16
-    gen.async_inference(np.random.normal(0,1,(num_test_samples,100)))
+    num_test_samples = args.batch
+    dist = np.random.normal(0,1,(num_test_samples,100))
+    gen.async_inference(dist)
+    np.save('dist.npy', dist)
     gen.wait()
     output = gen.extract_output()
     output = vectors_to_images(output)
     logger.log_images(
-        output, num_test_samples, 1, 1, 16
+        output, num_test_samples, 1, 1, num_test_samples
     )

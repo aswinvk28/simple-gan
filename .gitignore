@@ -5,3 +5,6 @@ runs/
 *.mapping
 *.xml
 *.yml
+downloaded_models/
+*.ipynb
+notebooks/
