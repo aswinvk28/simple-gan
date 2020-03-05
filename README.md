@@ -21,3 +21,7 @@ Generated:
 # Domain Modeller
 
 ![IR Model for MNIST](./images/IR_Model.png)
+
+The Temporal Difference Node is a Custom Layer that intercepts all successful inputs to the MNIST IR Model which then generates the digits with the right accuracy. The Custom Layer is built with Machine Learning. 
+
+By having a Temporal Difference node, simulations on output data can be produced for the datasets. Simulating the output domain can lead to unseen data, which improves the visibility of the model for generating graphics.
