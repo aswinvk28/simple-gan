@@ -35,6 +35,13 @@ def parse_args():
         default="",
         required=True
     )
+    parser.add_argument(
+        '-n', '--num',
+        help='Number',
+        type=int,
+        default="",
+        required=True
+    )
 
     return parser.parse_args()
 
@@ -49,12 +56,12 @@ if __name__ == "__main__":
     gen = MNISTGenerator()
     gen.load_model(args.model)
     num_test_samples = args.batch
-    dist = np.random.normal(0,1,(num_test_samples,100))
+    dist = np.load('dist'+args.num.__str__()+'.npy')
     gen.async_inference(dist)
-    np.save('dist.npy', dist)
     gen.wait()
     output = gen.extract_output()
     output = vectors_to_images(output)
+    np.save('output'+args.num.__str__()+'.npy', output)
     logger.log_images(
         output, num_test_samples, 1, 1, num_test_samples
     )
