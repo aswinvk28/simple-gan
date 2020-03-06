@@ -28,10 +28,20 @@ By having a Temporal Difference node, simulations on output data can be produced
 
 ## Memory analysis on the model
 
+```python
+
 [ INFO ] GFLOPs: 0.048
+
 [ INFO ] GIOPs: 0.000
+
 [ INFO ] MParams: 1.489
+
 [ INFO ] Sparsity: 0.000
+
 [ INFO ] Minimum memory consumption: 0.033
+
 [ INFO ] Maximum memory consumption: 0.125
+
 [ INFO ] Network status information file name: [model/model_report.csv](./model/model_report.csv)
+
+```
